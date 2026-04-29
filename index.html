@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diana Nur Fathimah | Learning & Development Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:     #F4F5FA;
+      --blush:     #D8DCEF;
+      --dusty:     #B0B8D8;
+      --sage:      #A8C4CC;
+      --sage-dark: #5A86A0;
+      --mist:      #C4D4E0;
+      --warm-mid:  #7A8EAA;
+      --warm-dark: #2E3D5C;
+      --text:      #2A3348;
+      --text-soft: #5A6880;
+      --white:     #FFFFFF;
+      --accent:    #7B8FC7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 6vw;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--blush);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--warm-dark);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 6vw 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 55vw; height: 80vh;
+      background: radial-gradient(ellipse at center, #D8DCEF 0%, #B0B8D8 40%, transparent 70%);
+      opacity: 0.45;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: -8%;
+      width: 40vw; height: 50vh;
+      background: radial-gradient(ellipse at center, #A8C4CC 0%, transparent 70%);
+      opacity: 0.3;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--warm-dark);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 560px;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-bottom: 3rem;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 2rem;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    .badge-sage  { background: #D0DFF0; color: #2E5080; }
+    .badge-blush { background: #DDD8F0; color: #4A3E82; }
+    .badge-mist  { background: #C8E0E8; color: #2A5A6A; }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+    .btn-primary { background: var(--warm-dark); color: var(--cream); }
+    .btn-outline { background: transparent; color: var(--warm-dark); border: 1.5px solid var(--dusty); }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 6vw; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--warm-dark);
+      line-height: 1.2;
+      margin-bottom: 3rem;
+    }
+    .section-title em { font-style: italic; color: var(--accent); }
+
+    /* ── ACHIEVEMENTS ── */
+    #achievements { background: var(--white); }
+    .achieve-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .achieve-card {
+      padding: 2rem;
+      border-radius: 1rem;
+      background: var(--cream);
+      border-left: 3px solid transparent;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .achieve-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.07); }
+    .achieve-card:nth-child(1) { border-color: var(--accent); }
+    .achieve-card:nth-child(2) { border-color: var(--sage-dark); }
+    .achieve-card:nth-child(3) { border-color: var(--mist); }
+    .achieve-card:nth-child(4) { border-color: var(--dusty); }
+    .achieve-card:nth-child(5) { border-color: var(--sage); }
+    .achieve-card:nth-child(6) { border-color: var(--warm-mid); }
+    .achieve-stat {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--warm-dark);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .achieve-desc { font-size: 0.88rem; color: var(--text-soft); line-height: 1.5; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--cream); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--blush), var(--sage), var(--blush));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 1.5rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+    .timeline-dot {
+      position: absolute;
+      left: -2.35rem;
+      top: 0.4rem;
+      width: 0.7rem; height: 0.7rem;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--cream);
+    }
+    .job-header { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; align-items: baseline; margin-bottom: 0.5rem; }
+    .job-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--warm-dark);
+    }
+    .job-company { font-size: 0.85rem; color: var(--accent); font-weight: 500; }
+    .job-meta { font-size: 0.78rem; color: var(--text-soft); display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin-bottom: 0.8rem; }
+    .job-bullets { list-style: none; padding: 0; }
+    .job-bullets li {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+    .job-bullets li::before {
+      content: '–';
+      position: absolute; left: 0;
+      color: var(--dusty);
+    }
+
+    /* ── COMPETENCIES ── */
+    #competencies { background: var(--white); }
+    .skills-container { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .skill-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 2rem;
+      font-size: 0.82rem;
+      background: var(--cream);
+      color: var(--warm-dark);
+      border: 1px solid var(--blush);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .skill-pill:hover { background: var(--blush); border-color: var(--dusty); }
+    .skill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sage-dark);
+      flex-shrink: 0;
+    }
+
+    /* ── EDUCATION & CERTS ── */
+    #education { background: var(--cream); }
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+    .edu-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 1.8rem;
+      border: 1px solid var(--blush);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .edu-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--warm-dark);
+      margin-bottom: 0.3rem;
+    }
+    .edu-inst { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.25rem; }
+    .edu-year { font-size: 0.78rem; color: var(--text-soft); }
+
+    /* ── AWARDS & CERTS ── */
+    .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .award-item {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 0.8rem;
+      border: 1px solid var(--blush);
+    }
+    .award-icon {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--blush);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+    .award-text { font-size: 0.83rem; color: var(--text-soft); line-height: 1.4; }
+
+    /* ── TOOLS ── */
+    .tools-row { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 2rem; }
+    .tool-tag {
+      padding: 0.4rem 0.9rem;
+      background: #D8DCEF;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--warm-dark);
+      color: var(--cream);
+      text-align: center;
+    }
+    #contact .section-label { color: var(--dusty); }
+    #contact .section-title { color: var(--cream); margin-bottom: 1rem; }
+    #contact .section-title em { color: var(--blush); }
+    .contact-sub { color: var(--dusty); font-size: 0.92rem; margin-bottom: 3rem; }
+    .contact-links {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem;
+    }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.1);
+      color: var(--cream);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .contact-link:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+    .lang-row { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .lang-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: 0.5rem;
+      padding: 0.7rem 1.3rem;
+      font-size: 0.82rem;
+      color: var(--dusty);
+    }
+    .lang-item strong { color: var(--cream); display: block; font-size: 0.9rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      background: var(--cream);
+      border-top: 1px solid var(--blush);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 4vw; }
+      .nav-links { gap: 1rem; }
+      section { padding: 4rem 5vw; }
+      .hero { padding: 8rem 5vw 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">Diana Nur Fathimah</div>
+    <ul class="nav-links">
+      <li><a href="#achievements">Impact</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#competencies">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <p class="hero-eyebrow">Learning &amp; Development Specialist</p>
+    <h1 class="hero-name">Diana Nur<br /><em>Fathimah</em></h1>
+    <p class="hero-tagline">
+      Designing scalable learning systems, instructional quality frameworks, and educator capability programs across education and EdTech environments — bridging pedagogy, systems thinking, and execution.
+    </p>
+    <div class="hero-badges">
+      <span class="badge badge-sage">Instructional Design</span>
+      <span class="badge badge-blush">Quality Assurance</span>
+      <span class="badge badge-mist">EdTech &amp; LMS</span>
+      <span class="badge badge-sage">Remote Team Leadership</span>
+      <span class="badge badge-blush">Agile Project Management</span>
+      <span class="badge badge-mist">Capability Building</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ── ACHIEVEMENTS ── -->
+  <section id="achievements">
+    <p class="section-label">Career Impact</p>
+    <h2 class="section-title">Measurable <em>Achievements</em></h2>
+    <div class="achieve-grid">
+      <div class="achieve-card">
+        <div class="achieve-stat">200+</div>
+        <p class="achieve-desc">Learning programs supported through a quality assurance system I built and institutionalized across multiple product lines.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat">~30%</div>
+        <p class="achieve-desc">Reduction in course production timelines (14–20 days → ~12 days) through Agile implementation across distributed teams.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat">30+</div>
+        <p class="achieve-desc">Cross-functional contributors led across multiple countries, ensuring delivery consistency and operational alignment.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat">2 wks</div>
+        <p class="achieve-desc">Onboarding ramp-up time achieved through a structured onboarding system enabling simultaneous course development at scale.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat">10+</div>
+        <p class="achieve-desc">Education centers where I led delivery of learning programs as Project Manager, managing teams across regions.</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat">IELTS 7.5</div>
+        <p class="achieve-desc">English proficiency (IELTS 7.5 | TOEFL ITP 627), enabling effective communication with global stakeholders.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <p class="section-label">Professional Journey</p>
+    <h2 class="section-title">Work <em>Experience</em></h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Senior Quality Assurance Specialist</span>
+          <span class="job-company">The KPI Institute (ILMS)</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Sep 2023 – Present</span>
+          <span>🌐 Global Education &amp; Research (Remote)</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Acted as quality lead for instructional design, ensuring all digital learning products met internal standards, educational integrity, and learner impact.</li>
+          <li>Spearheaded creation of internal QA systems — including guidelines, rubrics, and workflow documentation — that became institutional standards across 200+ programs.</li>
+          <li>Conducted multi-format content reviews (scripts, storyboards, multimedia) to identify instructional gaps, enhance clarity, and guarantee technical accuracy.</li>
+          <li>Managed functionality testing for eLearning modules, ensuring seamless learner experience and accessibility compliance.</li>
+          <li>Designed and facilitated learning and mentoring initiatives to upskill cross-functional teams and support capacity building within the department.</li>
+          <li>Produced strategic QA reports informing release decisions, stakeholder communication, and iteration priorities.</li>
+          <li>Initiated talent mapping system to identify capability gaps and inform targeted upskilling initiatives.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Project Manager — Instructional Design &amp; Learning Ops</span>
+          <span class="job-company">The KPI Institute (ILMS)</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Sep 2022 – Sep 2023</span>
+          <span>🌐 Global Education &amp; Research (Remote)</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Led instructional design projects across 10+ educational centers, overseeing timelines, deliverables, and stakeholder coordination.</li>
+          <li>Implemented Agile workflows, reducing production cycle by ~30% (14–20 days → ~12 days) while improving delivery consistency.</li>
+          <li>Built structured onboarding and mentorship system, accelerating new team readiness within 2 weeks and enabling simultaneous course development at scale.</li>
+          <li>Established the Quality Assurance function, shifting organization toward a quality-driven production model.</li>
+          <li>Facilitated change management practices to adapt to shifting client needs and evolving program priorities.</li>
+          <li>Oversaw recruitment, onboarding, and development plans for new team members across distributed teams of 30+ contributors.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Instructional Designer</span>
+          <span class="job-company">The KPI Institute (ILMS)</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Mar 2022 – Sep 2022</span>
+          <span>🌐 Global Education &amp; Research (Remote)</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Developed end-to-end instructional designs, integrating content, pedagogy, and digital media across multiple formats.</li>
+          <li>Selected and applied instructional methodologies suited to diverse learning goals and delivery formats.</li>
+          <li>Worked collaboratively with SMEs and stakeholders to design impactful, scalable learning solutions.</li>
+          <li>Iterated and improved content based on learner data, analytics, and design feedback.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Lead Technology Adoption — LMS &amp; School Partnerships</span>
+          <span class="job-company">ICANDO</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Sep 2021 – Present</span>
+          <span>🏫 Education Technology (EdTech)</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Led regional LMS implementation across schools, customizing onboarding and training solutions to match contextual needs.</li>
+          <li>Designed and delivered capacity-building sessions for educators to enhance digital adoption and classroom integration.</li>
+          <li>Built long-term institutional partnerships, providing continuous support and data-driven solution alignment.</li>
+          <li>Participated in content development for ICANDO's educational product for early learners.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Program Leader &amp; Homeroom Teacher</span>
+          <span class="job-company">Sekolah Cikal</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Jun 2019 – Jun 2021</span>
+          <span>🏫 Progressive Education Institution</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Led curriculum planning, instructional leadership, and teacher coordination across multiple subjects with a primary focus on English.</li>
+          <li>Mentored teachers in designing inclusive lesson plans and executing learner-centered instruction.</li>
+          <li>Delivered blended and face-to-face learning using performance-based assessments and differentiated instruction.</li>
+          <li>Oversaw student progress, behavior, and academic transitions through individualized learning plans.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">English Instructor — ESP, TOEFL, IELTS</span>
+          <span class="job-company">Universitas Pendidikan Indonesia – The Language Center</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Feb 2019 – Jun 2019</span>
+          <span>🎓 Higher Education</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Taught English for Specific Purposes (ESP), TOEFL, and IELTS preparation across diverse learner groups.</li>
+          <li>Created custom instructional materials to meet learner and institutional goals.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Translator &amp; Interpreter (EN–ID)</span>
+          <span class="job-company">Monash University</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Oct – Nov 2018</span>
+          <span>🎓 Melbourne, Australia</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Interpreted and translated educational content for university-run training programs.</li>
+          <li>Supported cross-linguistic coordination for academic seminars and materials.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">Academic English Facilitator (English Connect)</span>
+          <span class="job-company">Monash University</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Jan 2018 – Jan 2019</span>
+          <span>🎓 Melbourne, Australia</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Facilitated academic writing workshops and feedback sessions for international students.</li>
+          <li>Developed learning resources tailored to the academic demands of postgraduate coursework.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="job-header">
+          <span class="job-title">English Instructor</span>
+          <span class="job-company">Universitas Pendidikan Indonesia – The Language Center</span>
+        </div>
+        <div class="job-meta">
+          <span>📅 Aug 2015 – Jan 2017</span>
+          <span>🎓 Higher Education</span>
+        </div>
+        <ul class="job-bullets">
+          <li>Delivered general English, ESP, and exam preparation courses across learner levels.</li>
+          <li>Authored original teaching resources and adapted materials for blended delivery.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── COMPETENCIES ── -->
+  <section id="competencies">
+    <p class="section-label">Core Expertise</p>
+    <h2 class="section-title">Skills &amp; <em>Competencies</em></h2>
+    <div class="skills-container">
+      <span class="skill-pill"><span class="skill-dot"></span>Learning &amp; Development Strategy</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Instructional Design</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Learning Systems Architecture</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Capability Building &amp; Teacher Development</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Quality Assurance &amp; Learning Evaluation</span>
+      <span class="skill-pill"><span class="skill-dot"></span>EdTech &amp; LMS Implementation</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Stakeholder Engagement</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Institutional Collaboration</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Agile Project Management</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Remote Team Leadership</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Learning Operations</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Process Optimization</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Curriculum Design</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Performance Evaluation Frameworks</span>
+      <span class="skill-pill"><span class="skill-dot"></span>Talent Mapping</span>
+    </div>
+
+    <div class="tools-row">
+      <span class="tool-tag">LMS</span>
+      <span class="tool-tag">H5P</span>
+      <span class="tool-tag">Google Workspace</span>
+      <span class="tool-tag">Microsoft Office</span>
+      <span class="tool-tag">Asana</span>
+      <span class="tool-tag">Slack</span>
+      <span class="tool-tag">Microsoft Teams</span>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section id="education">
+    <p class="section-label">Academic Background</p>
+    <h2 class="section-title">Education &amp; <em>Credentials</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Education</div>
+        <div class="edu-inst">Monash University, Australia</div>
+        <div class="edu-year">2017 – 2018 · WAM: 77.375 · GPA: 3.375</div>
+        <p style="font-size:0.8rem; color:var(--text-soft); margin-top:0.6rem; line-height:1.5;">
+          <em>Thesis:</em> EFL Teachers' Perceptions and Experiences of Reflective Practice – A Case Study in a Non-Formal Education Institution in Indonesia
+        </p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of English Language &amp; Literature</div>
+        <div class="edu-inst">Universitas Pendidikan Indonesia</div>
+        <div class="edu-year">2010 – 2014 · GPA: 3.62 · Cum Laude</div>
+        <p style="font-size:0.8rem; color:var(--text-soft); margin-top:0.6rem; line-height:1.5;">
+          <em>Thesis:</em> A Multimodal Analysis of Mothers' Representation in Television Advertisements
+        </p>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top: 3rem;">Certifications &amp; Training</p>
+    <div class="awards-grid">
+      <div class="award-item">
+        <div class="award-icon">📜</div>
+        <div class="award-text">Educational Technology in ELT (2021)<br /><strong style="color: var(--text);">Iowa State University</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">📜</div>
+        <div class="award-text">Digital Technology in Education (2019)<br /><strong style="color: var(--text);">Monash University</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">📜</div>
+        <div class="award-text">Leap into Leadership Online — LiLO (2018)<br /><strong style="color: var(--text);">Monash University</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">📜</div>
+        <div class="award-text">Mindfulness Masterclass (2020)<br /><strong style="color: var(--text);">Monash University</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">📜</div>
+        <div class="award-text">The Dance of Storytelling (2020)<br /><strong style="color: var(--text);">Cipta Aliansi Edukasi</strong></div>
+      </div>
+    </div>
+
+    <p class="section-label" style="margin-top: 3rem;">Awards &amp; Recognition</p>
+    <div class="awards-grid">
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <div class="award-text">Employee of the Month (Oct 2022)<br /><strong style="color: var(--text);">The KPI Institute</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <div class="award-text">PIEoneer Award — Student Support (2018)<br /><strong style="color: var(--text);">Monash University · English Connect Team</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🎓</div>
+        <div class="award-text">LPDP Scholarship (2016)<br /><strong style="color: var(--text);">Ministry of Finance, Indonesia</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🌟</div>
+        <div class="award-text">Education Student Ambassador (2017–2018)<br /><strong style="color: var(--text);">Monash University</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🌟</div>
+        <div class="award-text">Outstanding Student Mentor (2017)<br /><strong style="color: var(--text);">Monash University</strong></div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🎓</div>
+        <div class="award-text">Beswan Djarum Scholar (2013)<br /><strong style="color: var(--text);">Djarum Foundation</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section id="publications" style="background: var(--white);">
+    <p class="section-label">Thought Leadership</p>
+    <h2 class="section-title">Publications &amp; <em>Presentations</em></h2>
+    <div class="timeline" style="padding-left: 1.5rem;">
+      <div class="timeline-item" style="padding-left:1.2rem;">
+        <div class="timeline-dot"></div>
+        <div style="font-size:0.78rem; color:var(--accent); font-weight:500; margin-bottom:0.2rem;">2021</div>
+        <div style="font-size:0.95rem; color:var(--warm-dark); font-weight:500;">Language Program Workshop: Learning Literature in Primary Level</div>
+        <div style="font-size:0.82rem; color:var(--text-soft);">Sekolah Cikal PD Day</div>
+      </div>
+      <div class="timeline-item" style="padding-left:1.2rem;">
+        <div class="timeline-dot"></div>
+        <div style="font-size:0.78rem; color:var(--accent); font-weight:500; margin-bottom:0.2rem;">2018</div>
+        <div style="font-size:0.95rem; color:var(--warm-dark); font-weight:500;">Preparing Indonesian Youth for a Transition to Adulthood</div>
+        <div style="font-size:0.82rem; color:var(--text-soft);">LPDP Monash Roundtable</div>
+      </div>
+      <div class="timeline-item" style="padding-left:1.2rem;">
+        <div class="timeline-dot"></div>
+        <div style="font-size:0.78rem; color:var(--accent); font-weight:500; margin-bottom:0.2rem;">2017</div>
+        <div style="font-size:0.95rem; color:var(--warm-dark); font-weight:500;">Literacy to Literacies: The Pedagogy of New Times</div>
+        <div style="font-size:0.82rem; color:var(--text-soft);">Applied Linguistics Conference, Universitas Pendidikan Indonesia</div>
+      </div>
+      <div class="timeline-item" style="padding-left:1.2rem;">
+        <div class="timeline-dot"></div>
+        <div style="font-size:0.78rem; color:var(--accent); font-weight:500; margin-bottom:0.2rem;">2015</div>
+        <div style="font-size:0.95rem; color:var(--warm-dark); font-weight:500;">Multimodal Analysis of Mothers' Representation in TV Advertisements</div>
+        <div style="font-size:0.82rem; color:var(--text-soft);">Linguistics Conference, Atma Jaya University</div>
+      </div>
+      <div class="timeline-item" style="padding-left:1.2rem;">
+        <div class="timeline-dot"></div>
+        <div style="font-size:0.78rem; color:var(--accent); font-weight:500; margin-bottom:0.2rem;">2015</div>
+        <div style="font-size:0.95rem; color:var(--warm-dark); font-weight:500;">Teaching English to Heterogeneous Students</div>
+        <div style="font-size:0.82rem; color:var(--text-soft);">Linguistics Conference, Atma Jaya University</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LEADERSHIP ── -->
+  <section id="leadership" style="background: var(--cream);">
+    <p class="section-label">Community &amp; Service</p>
+    <h2 class="section-title">Leadership &amp; <em>Volunteering</em></h2>
+    <div class="achieve-grid">
+      <div class="achieve-card">
+        <div class="achieve-stat" style="font-size:1.6rem;">🏛️</div>
+        <p class="achieve-desc" style="margin-top:0.4rem;"><strong style="color:var(--warm-dark);">Treasurer &amp; Core Committee</strong><br />LPDP Monash Community · 2017–2018</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat" style="font-size:1.6rem;">🏛️</div>
+        <p class="achieve-desc" style="margin-top:0.4rem;"><strong style="color:var(--warm-dark);">Public Educator Corps</strong><br />Asia-Africa Conference Museum · 2013–2015</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat" style="font-size:1.6rem;">📚</div>
+        <p class="achieve-desc" style="margin-top:0.4rem;"><strong style="color:var(--warm-dark);">Head of Academic Development</strong><br />English Students Association, UPI · 2012–2013</p>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-stat" style="font-size:1.6rem;">🎯</div>
+        <p class="achieve-desc" style="margin-top:0.4rem;"><strong style="color:var(--warm-dark);">Project Leader</strong><br />Annual English Contests &amp; Seminar, UPI · 2012</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <p class="section-label">Let's Connect</p>
+    <h2 class="section-title">Get in <em>Touch</em></h2>
+    <p class="contact-sub">Open to collaborations, opportunities, and conversations about learning &amp; development.</p>
+    <div class="contact-links">
+      <a href="mailto:diana.n.fathimah@gmail.com" class="contact-link">✉️ &nbsp;diana.n.fathimah@gmail.com</a>
+      <a href="https://linkedin.com/in/diana-nur-fathimah-1809aa43" target="_blank" rel="noopener" class="contact-link">🔗 &nbsp;LinkedIn</a>
+      <a href="tel:+6282126196291" class="contact-link">📱 &nbsp;+62 821 2619 6291</a>
+    </div>
+    <div class="lang-row">
+      <div class="lang-item"><strong>Bahasa Indonesia</strong>Native</div>
+      <div class="lang-item"><strong>English</strong>IELTS 7.5 · TOEFL ITP 627</div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2025 Diana Nur Fathimah · Indonesia · Built with care for GitHub Pages</p>
+  </footer>
+
+  <script>
+    // Intersection Observer for timeline animation
+    const items = document.querySelectorAll('.timeline-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(i => observer.observe(i));
+  </script>
+</body>
+</html>
